@@ -1,8 +1,8 @@
-package uk.org.brooklyn.chaos.experiment;
+package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.chaos.AutoAssembledChaosExperiment;
-import uk.org.brooklyn.chaos.annotation.Experiment;
+import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
  * @author ImBrooklyn

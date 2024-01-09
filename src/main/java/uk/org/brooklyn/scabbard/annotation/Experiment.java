@@ -1,4 +1,4 @@
-package uk.org.brooklyn.chaos.annotation;
+package uk.org.brooklyn.scabbard.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

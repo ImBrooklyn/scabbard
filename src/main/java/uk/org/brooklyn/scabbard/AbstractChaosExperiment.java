@@ -1,4 +1,4 @@
-package uk.org.brooklyn.chaos;
+package uk.org.brooklyn.scabbard;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
@@ -23,7 +23,7 @@ public abstract class AbstractChaosExperiment implements IChaosExperiment {
     static {
         String bladeHome = System.getenv("CHAOS_BLADE_HOME");
         bladeHome = bladeHome == null || bladeHome.isBlank() ? "" : bladeHome;
-        HOME = bladeHome.isBlank() || bladeHome.startsWith("/") ? bladeHome : bladeHome.concat("/");
+        HOME = bladeHome.isBlank() || bladeHome.endsWith("/") ? bladeHome : bladeHome.concat("/");
     }
 
     private String uid = null;
@@ -54,8 +54,10 @@ public abstract class AbstractChaosExperiment implements IChaosExperiment {
             throw new IllegalStateException("status: " + status());
         }
         JSONObject res = execute(command());
-        this.uid = res.getString("result");
-        return this.uid;
+        String uid = res.getString("result");
+        this.uid = uid;
+        ChaosExperimentSessionContext.add(uid, this);
+        return uid;
     }
 
     @Override
@@ -64,6 +66,7 @@ public abstract class AbstractChaosExperiment implements IChaosExperiment {
             throw new IllegalStateException("status: " + status());
         }
         execute("blade destroy " + this.uid);
+        ChaosExperimentSessionContext.remove(this.uid);
     }
 
     private boolean isPreparing() {

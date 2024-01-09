@@ -1,4 +1,4 @@
-package uk.org.brooklyn.chaos;
+package uk.org.brooklyn.scabbard;
 
 /**
  * @author ImBrooklyn

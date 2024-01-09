@@ -1,7 +1,7 @@
-package uk.org.brooklyn.chaos;
+package uk.org.brooklyn.scabbard;
 
 import lombok.SneakyThrows;
-import uk.org.brooklyn.chaos.annotation.Experiment;
+import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -13,7 +13,7 @@ import java.lang.reflect.Modifier;
 public abstract class AutoAssembledChaosExperiment extends AbstractChaosExperiment {
     @Override
     @SneakyThrows(IllegalAccessException.class)
-    protected String command() {
+    protected final String command() {
 
         Class<?> clazz = this.getClass();
         Experiment anno = clazz.getAnnotation(Experiment.class);
