@@ -7,17 +7,15 @@ import java.lang.annotation.Target;
 
 /**
  * @author ImBrooklyn
- * @since 08/12/2023
+ * @since 10/03/2024
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface Experiment {
+@Target(ElementType.FIELD)
+public @interface ExperimentArg {
     /**
-     * Basic command of the chaos experiment.
+     * Argument name of the chaos experiment.
      *
      * @return Command
      */
     String value() default "";
-
-    String prefix() default "blade create";
 }

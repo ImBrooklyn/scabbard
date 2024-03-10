@@ -2,9 +2,12 @@ package uk.org.brooklyn.scabbard;
 
 import lombok.SneakyThrows;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
+import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+
+import static uk.org.brooklyn.scabbard.ScabbardConstants.SPACE;
 
 /**
  * @author ImBrooklyn
@@ -28,13 +31,13 @@ public abstract class AutoAssembledChaosExperiment extends AbstractChaosExperime
             baseCommand = toBaseCommand(clazz.getSimpleName());
         }
 
-        CommandBuilder cb = new CommandBuilder("blade create ".concat(baseCommand));
+        CommandBuilder cb = new CommandBuilder(anno.prefix().concat(SPACE).concat(baseCommand));
         Field[] declaredFields = clazz.getDeclaredFields();
         for (Field field : declaredFields) {
             int mod = field.getModifiers();
             if (Modifier.isPrivate(mod) && Modifier.isPrivate(mod)) {
                 field.setAccessible(true);
-                String option = this.toOption(field.getName());
+                String option = this.toOption(field);
                 if (boolean.class.equals(field.getType()) || Boolean.class.equals(field.getType())) {
                     Boolean val = (Boolean) field.get(this);
                     cb.appendIfTrue(option, val);
@@ -59,6 +62,16 @@ public abstract class AutoAssembledChaosExperiment extends AbstractChaosExperime
             first = false;
         }
         return sb.toString().trim();
+    }
+
+    private String toOption(Field field) {
+        ExperimentArg arg = field.getAnnotation(ExperimentArg.class);
+        if (arg == null || arg.value().isBlank()) {
+            return toOption(field.getName());
+        }
+
+        return "--".concat(arg.value());
+
     }
 
     private String toOption(String field) {

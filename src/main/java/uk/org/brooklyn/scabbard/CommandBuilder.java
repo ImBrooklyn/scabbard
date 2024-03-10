@@ -1,13 +1,15 @@
 package uk.org.brooklyn.scabbard;
 
+import static uk.org.brooklyn.scabbard.ScabbardConstants.SPACE;
+
 public class CommandBuilder {
-    private static final String SPACE = " ";
     private final StringBuilder sb;
 
     public CommandBuilder(String baseCmd) {
         sb = new StringBuilder(baseCmd);
     }
 
+    @SuppressWarnings("unused")
     public CommandBuilder appendIfTrue(String option, Boolean append) {
         if (option != null && !option.isBlank() && Boolean.TRUE.equals(append)) {
             sb.append(SPACE).append(option);
