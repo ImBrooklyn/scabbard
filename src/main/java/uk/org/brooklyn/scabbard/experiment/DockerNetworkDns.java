@@ -1,7 +1,7 @@
 package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
@@ -12,7 +12,7 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
  */
 @Experiment
 @Builder
-public class DockerNetworkDns extends AutoAssembledChaosExperiment {
+public class DockerNetworkDns extends AutowiredChaosExperiment {
 
     /**
      * 域名 (必要参数)

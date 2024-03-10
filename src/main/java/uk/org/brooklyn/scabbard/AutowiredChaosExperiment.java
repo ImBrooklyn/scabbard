@@ -13,7 +13,7 @@ import static uk.org.brooklyn.scabbard.ScabbardConstants.SPACE;
  * @author ImBrooklyn
  * @since 09/12/2023
  */
-public abstract class AutoAssembledChaosExperiment extends AbstractChaosExperiment {
+public abstract class AutowiredChaosExperiment extends AbstractChaosExperiment {
     @Override
     @SneakyThrows(IllegalAccessException.class)
     protected final String command() {

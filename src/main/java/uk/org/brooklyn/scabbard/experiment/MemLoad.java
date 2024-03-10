@@ -1,7 +1,7 @@
 package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
@@ -13,7 +13,7 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
  */
 @Experiment
 @Builder
-public class MemLoad extends AutoAssembledChaosExperiment {
+public class MemLoad extends AutowiredChaosExperiment {
 
     /**
      * 内存使用率，取值 0 - 100

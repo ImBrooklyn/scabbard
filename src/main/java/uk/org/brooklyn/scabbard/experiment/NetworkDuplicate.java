@@ -1,7 +1,7 @@
 package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 
@@ -18,7 +18,7 @@ import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
  */
 @Experiment
 @Builder
-public class NetworkDuplicate extends AutoAssembledChaosExperiment {
+public class NetworkDuplicate extends AutowiredChaosExperiment {
 
     /**
      * 目标 IP。 支持通过子网掩码来指定一个网段的IP地址, 例如 192.168.1.0/24. 则

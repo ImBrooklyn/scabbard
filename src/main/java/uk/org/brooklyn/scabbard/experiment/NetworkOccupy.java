@@ -1,9 +1,8 @@
 package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
-import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 
 /**
  * 本地端口占用，验证端口已被占用的情况下，使用此端口的业务容错能力
@@ -13,7 +12,7 @@ import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
  */
 @Experiment
 @Builder
-public class NetworkOccupy extends AutoAssembledChaosExperiment {
+public class NetworkOccupy extends AutowiredChaosExperiment {
 
     /**
      * 指定被占用的端口，（必填项）

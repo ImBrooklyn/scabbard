@@ -1,9 +1,8 @@
 package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
-import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 
 /**
  * 篡改 dns 域名解析实验场景。此实验会修改本地的 hosts，篡改域名地址映射。
@@ -14,7 +13,7 @@ import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
  */
 @Experiment
 @Builder
-public class NetworkDns extends AutoAssembledChaosExperiment {
+public class NetworkDns extends AutowiredChaosExperiment {
 
     /**
      * 域名 (必要参数)

@@ -1,7 +1,7 @@
 package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
@@ -15,7 +15,7 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
  */
 @Experiment
 @Builder
-public class DiskBurn extends AutoAssembledChaosExperiment {
+public class DiskBurn extends AutowiredChaosExperiment {
 
     /**
      * 指定提升磁盘 io 的目录，会作用于其所在的磁盘上，默认值是 /

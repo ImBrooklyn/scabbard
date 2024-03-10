@@ -1,7 +1,7 @@
 package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
@@ -13,7 +13,7 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
  */
 @Experiment
 @Builder
-public class CpuLoad extends AutoAssembledChaosExperiment {
+public class CpuLoad extends AutowiredChaosExperiment {
     /**
      * 指定 CPU 负载百分比，取值 0-100
      */

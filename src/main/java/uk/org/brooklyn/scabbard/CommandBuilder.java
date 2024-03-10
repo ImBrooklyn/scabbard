@@ -9,7 +9,6 @@ public class CommandBuilder {
         sb = new StringBuilder(baseCmd);
     }
 
-    @SuppressWarnings("unused")
     public CommandBuilder appendIfTrue(String option, Boolean append) {
         if (option != null && !option.isBlank() && Boolean.TRUE.equals(append)) {
             sb.append(SPACE).append(option);

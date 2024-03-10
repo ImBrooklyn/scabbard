@@ -1,7 +1,7 @@
 package uk.org.brooklyn.scabbard.experiment;
 
 import lombok.Builder;
-import uk.org.brooklyn.scabbard.AutoAssembledChaosExperiment;
+import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 
@@ -11,7 +11,7 @@ import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
  */
 @Experiment(prefix = "blade prepare")
 @Builder
-public class PrepareJvm extends AutoAssembledChaosExperiment {
+public class PrepareJvm extends AutowiredChaosExperiment {
 
     /**
      * 指定 JAVA_HOME 路径，用于指定 java bin 和 tools.jar，如果不添加此参数，
