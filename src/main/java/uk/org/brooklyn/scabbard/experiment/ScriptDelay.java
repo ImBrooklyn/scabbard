@@ -5,7 +5,7 @@ import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
- * 通过指定脚本和函数执行延迟场景。
+ * Executes latency scenarios by invoking custom script functions.
  *
  * @author ImBrooklyn
  * @since 10/03/2024
@@ -15,22 +15,22 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 public class ScriptDelay extends AutowiredChaosExperiment {
 
     /**
-     * 延迟时间，单位是毫秒（必要参数）
+     * Delay duration in milliseconds (required parameter)
      */
     private final Long time;
 
     /**
-     * 脚本路径（必要参数）
+     * Script file path (required parameter)
      */
     private final String file;
 
     /**
-     * 脚本中的函数名（必要参数）
+     * Target function name in script (required parameter)
      */
     private final String functionName;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Experiment duration in seconds (common parameter)
      */
     private final Integer timeout;
 }

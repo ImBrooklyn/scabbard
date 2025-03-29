@@ -5,8 +5,11 @@ import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
- * CPU 相关的混沌实验包含 CPU 满载，可以指定核数、具体核满载或者总 CPU 负载百分比。
- * 旨在 CPU 在特定负载下，验证服务质量、监控告警、流量调度、弹性伸缩等能力。
+ * CPU-related chaos experiments include full CPU load, allowing specification of core count,
+ * specific core overload, or total CPU load percentage.
+ * <p>
+ * Aims to validate system capabilities such as service quality, monitoring & alerting,
+ * traffic scheduling, and elastic scaling under specific CPU load conditions.
  *
  * @author ImBrooklyn
  * @since 09/12/2023
@@ -15,22 +18,22 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 @Builder
 public class CpuLoad extends AutowiredChaosExperiment {
     /**
-     * 指定 CPU 负载百分比，取值 0-100
+     * Specifies the CPU load percentage (0-100)
      */
     protected final Integer cpuPercent;
 
     /**
-     * 指定 CPU 满载的个数
+     * Specifies the number of CPU cores to be fully loaded
      */
     private final Integer cpuCount;
 
     /**
-     * 指定 CPU 满载的具体核，核索引从 0 开始 (0-3 or 1,3)
+     * Specifies specific CPU cores to be fully loaded (core indices start from 0, e.g., 0-3 or 1,3)
      */
     private final String cpuList;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Sets the experiment duration in seconds (common parameter)
      */
     private final Integer timeout;
 }

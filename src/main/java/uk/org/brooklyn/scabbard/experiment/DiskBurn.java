@@ -5,10 +5,10 @@ import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
- * 提升磁盘读写 io 负载，可以指定受影响的目录，也可以通过调整读写的块大小提升 io 负载，
- * 默认值是 10，单位是 M，块的数量固定为 100，即在默认情况下，写会占用 1000M 的磁盘空间，
- * 读会固定占用 600M 的空间，因为读操作会先创建一个 600M 的固定大小文件，预计 3s之内，
- * 在创建时写 io 会升高。验证磁盘 io 高负载下对系统服务的影响，比如监控告警、服务稳定性等。
+ * Increases disk I/O load by specifying target directories or adjusting read/write block sizes.
+ * Default block size is 10M. Uses fixed 100 blocks - default writes consume 1000M disk space,
+ * reads use fixed 600M space (pre-allocated file creation may cause write spikes within 3s).
+ * Validates system behavior under high disk I/O load, including monitoring alerts and service stability.
  *
  * @author ImBrooklyn
  * @since 09/12/2023
@@ -18,28 +18,28 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 public class DiskBurn extends AutowiredChaosExperiment {
 
     /**
-     * 指定提升磁盘 io 的目录，会作用于其所在的磁盘上，默认值是 /
+     * Target directory for I/O operations (affects its containing disk), defaults to /
      */
     private final String path;
 
     /**
-     * 触发提升磁盘读 IO 负载，会创建 600M 的文件用于读，销毁实验会自动删除
+     * Enables read I/O load (creates 600M file for reading, automatically cleaned up when experiment ends)
      */
     private final Boolean read;
 
     /**
-     * 触发提升磁盘写 IO 负载，会根据块大小的值来写入一个文件，比如块大小是 10，
-     * 则固定的块的数量是 100，则会创建 1000M 的文件，销毁实验会自动删除
+     * Enables write I/O load (writes file based on block size, e.g. block size 10 with 100 blocks = 1000M file,
+     * automatically cleaned up when experiment ends)
      */
     private final Boolean write;
 
     /**
-     * 块大小, 单位是 M, 默认值是 10，一般不需要修改，除非想更大的提高 io 负载
+     * Block size in megabytes (M), default 10, generally not modified unless higher I/O load is required
      */
     private final String size;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Sets experiment duration in seconds (common parameter)
      */
     private final Integer timeout;
 }

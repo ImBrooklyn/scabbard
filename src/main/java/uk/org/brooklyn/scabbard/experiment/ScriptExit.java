@@ -5,7 +5,7 @@ import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
- * 通过指定脚本和函数执行退出场景。
+ * Triggers controlled process termination through custom script functions.
  *
  * @author ImBrooklyn
  * @since 10/03/2024
@@ -15,27 +15,27 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 public class ScriptExit extends AutowiredChaosExperiment {
 
     /**
-     * 退出码，默认值是 1
+     * Exit status code (default: 1)
      */
     private final Integer exitCode;
 
     /**
-     * 退出信息
+     * Termination message for logging
      */
     private final String exitMessage;
 
     /**
-     * 脚本路径（必要参数）
+     * Script file path (required parameter)
      */
     private final String file;
 
     /**
-     * 脚本中的函数名（必要参数）
+     * Target function name in script (required parameter)
      */
     private final String functionName;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Experiment duration in seconds (common parameter)
      */
     private final Integer timeout;
 }

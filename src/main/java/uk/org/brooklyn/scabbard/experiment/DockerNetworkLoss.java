@@ -6,7 +6,7 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 
 /**
- * 容器内网络丢包场景 {@link NetworkLoss}
+ * Container network packet loss scenario {@link NetworkLoss}
  *
  * @author ImBrooklyn
  * @since 10/03/2024
@@ -16,81 +16,75 @@ import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 public class DockerNetworkLoss extends AutowiredChaosExperiment {
 
     /**
-     * 目标 IP。 支持通过子网掩码来指定一个网段的IP地址, 例如 192.168.1.0/24. 则
-     * 192.168.1.0~192.168.1.255 都生效。你也可以指定固定的 IP，如
-     * 192.168.1.1 或者 192.168.1.1/32，也可以通过都号分隔多个参数，例如
-     * 192.168.1.1,192.168.2.1。
+     * Target IP address(es). Supports subnet masks (e.g., 192.168.1.0/24 for 192.168.1.0-255).
+     * Can specify multiple IPs as comma-separated values: 192.168.1.1,192.168.2.1.
+     * Single IP formats: 192.168.1.1 or 192.168.1.1/32.
      */
     private final String destinationIp;
 
     /**
-     * 排除掉的端口，默认会忽略掉通信的对端端口，目的是保留通信可用。可以指定多个，
-     * 使用逗号分隔或者连接符表示范围，例如 22,8000 或者 8000-8010。 这个参数不能与
-     * localPort 或者 remotePort 参数一起使用
+     * Excluded ports (preserves essential communication by default). Accepts multiple values:
+     * comma-separated (22,8000) or ranges (8000-8010). Incompatible with localPort/remotePort.
      */
     private final String excludePort;
 
     /**
-     * 排除受影响的 IP，支持通过子网掩码来指定一个网段的IP地址, 例如
-     * 192.168.1.0/24. 则 192.168.1.0~192.168.1.255 都生效。也可以指定固定的 IP，
-     * 如 192.168.1.1 或者 192.168.1.1/32，也可以通过都号分隔多个参数，例如
-     * 192.168.1.1,192.168.2.1。
+     * Excluded IP address(es). Supports subnet masks (e.g., 192.168.1.0/24) and multiple formats:
+     * single IP (192.168.1.1), CIDR notation (192.168.1.1/32), or comma-separated IPs.
      */
     private final String excludeIp;
 
     /**
-     * --interface 参数。
-     * 网卡设备(network interface card)，例如 eth0 (必要参数)
+     * --interface parameter.
+     * Network interface card (NIC) name, e.g., eth0 (required).
      */
     @ExperimentArg("interface")
     private final String nic;
 
     /**
-     * 本地端口，一般是本机暴露服务的端口。可以指定多个，使用逗号分隔或者连接符表示范围，
-     * 例如 80,8000-8080
+     * Local port(s) for exposed services. Accepts comma-separated values or ranges (80,8000-8080).
      */
     private final String localPort;
 
     /**
-     * 丢包百分比，取值在[0, 100]的正整数 (必要参数)
+     * Packet loss percentage (0-100 integer, required).
      */
     private final Integer percent;
 
     /**
-     * 远程端口，一般是要访问的外部暴露服务的端口。可以指定多个，使用逗号分隔或者连接符
-     * 表示范围，例如 80,8000-8080
+     * Remote port(s) for external services. Accepts comma-separated values or ranges (80,8000-8080).
      */
     private final String remotePort;
 
     /**
-     * 强制覆盖已有的 tc 规则，请务必在明确之前的规则可覆盖的情况下使用
+     * Force override existing tc rules. Use with caution.
      */
     private final Boolean force;
 
     /**
-     * 针对添加 excludePort 参数，报 ss 命令找不到的情况下使用，忽略排除端口
+     * Ignore port exclusion when 'ss' command is unavailable (excludePort compatibility).
      */
     private final String ignorePeerPort;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Experiment duration in seconds (common parameter).
      */
     private final Integer timeout;
 
-    // docker
+    // Docker parameters
 
     /**
-     * 目标容器 ID
+     * Target container ID.
      */
     private final String containerId;
 
     /**
-     * Docker server 地址，默认为本地的 /var/run/docker.sock
+     * Docker server address, defaults to local /var/run/docker.sock.
      */
     private final String dockerEndpoint;
 
     /**
-     * chaosblade-tool 镜像仓库地址，默认是 `registry.cn-hangzhou.aliyuncs.com/chaosblade`
+     * chaosblade-tool image repository, default: `registry.cn-hangzhou.aliyuncs.com/chaosblade`.
      */
     private final String imageRepo;
 }

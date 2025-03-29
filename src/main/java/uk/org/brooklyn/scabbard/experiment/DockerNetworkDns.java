@@ -5,7 +5,7 @@ import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
- * 容器内dns篡改实验 {@link NetworkDns}
+ * Container DNS tampering experiment {@link NetworkDns}
  *
  * @author ImBrooklyn
  * @since 10/03/2024
@@ -15,34 +15,34 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 public class DockerNetworkDns extends AutowiredChaosExperiment {
 
     /**
-     * 域名 (必要参数)
+     * Domain name (required)
      */
     private final String domain;
 
     /**
-     * 映射的 ip (必要参数)
+     * Mapped IP address (required)
      */
     private final String ip;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Experiment duration in seconds (common parameter)
      */
     private final Integer timeout;
 
-    // docker
+    // Docker parameters
 
     /**
-     * 目标容器 ID
+     * Target container ID
      */
     private final String containerId;
 
     /**
-     * Docker server 地址，默认为本地的 /var/run/docker.sock
+     * Docker server address, defaults to local /var/run/docker.sock
      */
     private final String dockerEndpoint;
 
     /**
-     * chaosblade-tool 镜像仓库地址，默认是 `registry.cn-hangzhou.aliyuncs.com/chaosblade`
+     * chaosblade-tool image repository, default: `registry.cn-hangzhou.aliyuncs.com/chaosblade`
      */
     private final String imageRepo;
 }

@@ -6,6 +6,8 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 
 /**
+ * JVM preparation experiment for attaching Java agents.
+ *
  * @author ImBrooklyn
  * @since 10/03/2024
  */
@@ -14,30 +16,30 @@ import uk.org.brooklyn.scabbard.annotation.ExperimentArg;
 public class PrepareJvm extends AutowiredChaosExperiment {
 
     /**
-     * 指定 JAVA_HOME 路径，用于指定 java bin 和 tools.jar，如果不添加此参数，
-     * 默认会优先获取 JAVA_HOME 环境变量，如果获取失败，会解析指定进程参数获取
-     * JAVA_HOME，获取失败，会使用 chaosblade 自带的 tools.jar
+     * JAVA_HOME path for java binaries and tools.jar.
+     * Priority order: 1) this parameter 2) JAVA_HOME env 3) process arguments
+     * 4) Built-in chaosblade tools.jar
      */
     @ExperimentArg("javaHome")
     private final String javaHome;
 
     /**
-     * java 进程ID
+     * Target JVM process ID
      */
     private final String pid;
 
     /**
-     * java agent 暴露服务的本地端口，用于下发实验命令
+     * Local port for the Java agent service (command channel)
      */
     private final Integer port;
 
     /**
-     * java 进程关键词，用于定位 java 进程
+     * Process keyword for JVM identification
      */
     private final String process;
 
     /**
-     * 开启 debug 模式
+     * Enable debug mode
      */
     private final Boolean debug;
 }

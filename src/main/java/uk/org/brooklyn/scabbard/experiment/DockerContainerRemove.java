@@ -12,17 +12,17 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 @Builder
 public class DockerContainerRemove extends AutowiredChaosExperiment {
     /**
-     * 目标容器 ID
+     * Target container ID
      */
     private final String containerId;
 
     /**
-     * Docker server 地址，默认为本地的 /var/run/docker.sock
+     * Docker server address, defaults to the local /var/run/docker.sock
      */
     private final String dockerEndpoint;
 
     /**
-     * 是否强制删除
+     * Whether to force removal
      */
     private final Boolean force;
 }

@@ -5,7 +5,8 @@ import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
- * 本地端口占用，验证端口已被占用的情况下，使用此端口的业务容错能力
+ * Local port occupation experiment. Validates system resilience when accessing
+ * already occupied service ports.
  *
  * @author ImBrooklyn
  * @since 10/03/2024
@@ -15,17 +16,17 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 public class NetworkOccupy extends AutowiredChaosExperiment {
 
     /**
-     * 指定被占用的端口，（必填项）
+     * Target port to occupy (required)
      */
     private final Integer port;
 
     /**
-     * 强制占用此端口，会将已使用此端口的进程杀掉
+     * Force occupation by terminating existing port processes
      */
     private final Boolean force;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Experiment duration in seconds (common parameter)
      */
     private final Integer timeout;
 }

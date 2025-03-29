@@ -5,8 +5,8 @@ import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
- * 篡改 dns 域名解析实验场景。此实验会修改本地的 hosts，篡改域名地址映射。
- * 该场景主要验证域名解析异常的情况下，系统的自我容错能力。
+ * DNS tampering experiment. Modifies local hosts file to alter domain resolution.
+ * Validates system fault tolerance under abnormal DNS conditions.
  *
  * @author ImBrooklyn
  * @since 10/03/2024
@@ -16,17 +16,17 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 public class NetworkDns extends AutowiredChaosExperiment {
 
     /**
-     * 域名 (必要参数)
+     * Target domain name (required)
      */
     private final String domain;
 
     /**
-     * 映射的 ip (必要参数)
+     * Mapped IP address (required)
      */
     private final String ip;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Experiment duration in seconds (common parameter)
      */
     private final Integer timeout;
 }

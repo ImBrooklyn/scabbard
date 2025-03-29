@@ -9,18 +9,16 @@ public class CommandBuilder {
         sb = new StringBuilder(baseCmd);
     }
 
-    public CommandBuilder appendIfTrue(String option, Boolean append) {
+    public void appendIfTrue(String option, Boolean append) {
         if (option != null && !option.isBlank() && Boolean.TRUE.equals(append)) {
             sb.append(SPACE).append(option);
         }
-        return this;
     }
 
-    public CommandBuilder appendIfNonnull(String option, Object arg) {
+    public void appendIfNonnull(String option, Object arg) {
         if (option != null && !option.isBlank() && arg != null) {
             sb.append(SPACE).append(option).append(SPACE).append(arg);
         }
-        return this;
     }
 
     @Override

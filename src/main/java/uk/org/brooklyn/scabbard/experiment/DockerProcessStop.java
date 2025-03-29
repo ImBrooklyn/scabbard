@@ -5,7 +5,7 @@ import uk.org.brooklyn.scabbard.AutowiredChaosExperiment;
 import uk.org.brooklyn.scabbard.annotation.Experiment;
 
 /**
- * 容器内停止进程实验 {@link ProcessStop}
+ * Container process stop experiment {@link ProcessStop}
  *
  * @author ImBrooklyn
  * @since 10/03/2024
@@ -15,40 +15,40 @@ import uk.org.brooklyn.scabbard.annotation.Experiment;
 public class DockerProcessStop extends AutowiredChaosExperiment {
 
     /**
-     * 进程关键词，会在整个命令行中查找
+     * Process keyword (searched across the entire command line)
      */
     private final String process;
 
     /**
-     * 进程命令，只会在命令中查找
+     * Process command (searched only in the command name)
      */
     private final String processCmd;
 
     /**
-     * 设定运行时长，单位是秒，通用参数
+     * Experiment duration in seconds (common parameter)
      */
     private final Integer timeout;
 
-    // docker
+    // Docker parameters
 
     /**
-     * 是否覆盖容器内已有的 chaosblade 工具，默认是 false，表示不覆盖，
-     * chaosblade 在容器内的部署路径为 /opt/chaosblade
+     * Overwrite existing chaosblade tool in container (default: false).
+     * Chaosblade deployment path in container: /opt/chaosblade
      */
     private final Boolean bladeOverride;
 
     /**
-     * 指定本地 chaosblade-VERSION.tar.gz 工具包全路径，用于拷贝到容器内执行
+     * Full path to local chaosblade-VERSION.tar.gz package for container deployment
      */
     private final String bladeTarFile;
 
     /**
-     * 目标容器 ID
+     * Target container ID
      */
     private final String containerId;
 
     /**
-     * Docker server 地址，默认为本地的 /var/run/docker.sock
+     * Docker server address, defaults to local /var/run/docker.sock
      */
     private final String dockerEndpoint;
 }
