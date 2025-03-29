@@ -1,9 +1,12 @@
 package uk.org.brooklyn.scabbard;
 
+import lombok.Getter;
+
 /**
  * @author ImBrooklyn
  * @since 09/12/2023
  */
+@Getter
 public enum ExperimentStatus {
 
     PREPARING(0, "preparing"),
@@ -30,21 +33,4 @@ public enum ExperimentStatus {
         return null;
     }
 
-    public static ExperimentStatus parse(int code) {
-        for (ExperimentStatus value : values()) {
-            if (value.code == code) {
-                return value;
-            }
-        }
-
-        return null;
-    }
-
-    public int getCode() {
-        return this.code;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
 }

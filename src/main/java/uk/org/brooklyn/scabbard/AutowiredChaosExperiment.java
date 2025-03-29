@@ -35,7 +35,7 @@ public abstract class AutowiredChaosExperiment extends AbstractChaosExperiment {
         Field[] declaredFields = clazz.getDeclaredFields();
         for (Field field : declaredFields) {
             int mod = field.getModifiers();
-            if (Modifier.isPrivate(mod) && Modifier.isPrivate(mod)) {
+            if (Modifier.isPrivate(mod)) {
                 field.setAccessible(true);
                 String option = this.toOption(field);
                 if (boolean.class.equals(field.getType()) || Boolean.class.equals(field.getType())) {
@@ -92,7 +92,8 @@ public abstract class AutowiredChaosExperiment extends AbstractChaosExperiment {
         return sb.toString();
     }
 
-    public String printCommand() {
+    @Override
+    public String toString() {
         return command();
     }
 }
